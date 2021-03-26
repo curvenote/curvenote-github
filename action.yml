@@ -1,0 +1,46 @@
+name: Push
+description: Push a file to curvenote article
+inputs:
+  path:
+    description: |
+      File or folder to push to curvenote. PATH must be relative to the
+      root directory of the GitHub repository.
+    required: true
+  project:
+    description: |
+      Identifier of target Project. PROJECT may match title, name, or id
+      of an existing Project. If no existing Project is found, a new
+      Project will be created with title PROJECT.
+    required: true
+  article:
+    description: |
+      Identifier of target Article. ARTICLE may match title, name, or id
+      of an existing Article. If no existing Article is found, a new
+      Article will be created with title ARTICLE. ARTICLE is ignored if
+      PATH is a folder. If PATH is a folder or ARTICLE is not provided,
+      filename will be used for Article.
+    required: false
+  team:
+    description: |
+      Team to use when creating a new Project. TEAM is ignored if PROJECT
+      already exists. If PROJECT does not exist and TEAM is not provided,
+      the new Project will be created under the current user.
+    required: false
+  previous_commit: 
+    description: |
+      Commit hash when PATH was last pushed to curvenote. If PREVIOUS_COMMIT
+      is provided, this will only push to curvenote if files under PATH
+      have changed. If PREVIOUS_COMMIT is not provided, new Versions
+      will be pushed to curvenote even if the source files have not
+      changed. Note: this only works if repository is checked out with
+      full git history in the workflow (i.e. "fetch-depth: 0").
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+    - ${{ inputs.path }}
+    - ${{ inputs.project }}
+    - ${{ inputs.article }}
+    - ${{ inputs.team }}
+    - ${{ inputs.previous_commit }}
