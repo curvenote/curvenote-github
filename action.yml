@@ -1,4 +1,4 @@
-name: Push
+name: Curvenote Push
 description: Push a file to curvenote article
 inputs:
   path:
