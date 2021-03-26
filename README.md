@@ -2,12 +2,9 @@
 
 ## Description
 This GitHub action allows you to automate pushing files and folders
-from GitHub to [curvenote](https://curvenote.com). Currently, it
-only works in this repo, since the Python client and GitHub Action
-are private. Eventually, `action.yml`, `Dockerfile`, `entrypoint.sh`,
-and this file need to be moved to their own public repo where they
-may be published to the GitHub Actions Marketplace. Finally, only
-markdown files are supported so far.
+from GitHub to [curvenote](https://curvenote.com). 
+
+Only markdown files are supported so far.
 
 ## Basic Usage
 To upload a single file on every push:
