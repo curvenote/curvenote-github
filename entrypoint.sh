@@ -1,6 +1,9 @@
 #! /bin/bash -l
 cd /github/workspace
-files=`git diff --name-only $5 HEAD`
+if [[ $5 != "0000000000000000000000000000000000000000" ]]
+then
+    files=`git diff --name-only $5 HEAD`
+fi
 if ! [[ $files ]] || [[ $files == *"$1"* ]]
 then
     echo "pushing $1 to curvenote"

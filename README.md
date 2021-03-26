@@ -2,9 +2,9 @@
 
 ## Description
 This GitHub action allows you to automate pushing files and folders
-from GitHub to [curvenote](https://curvenote.com). 
-
-Only markdown files are supported so far.
+from GitHub to [curvenote](https://curvenote.com). It uses the
+open-source [curvenote Python client](https://pypi.org/project/curvenote/).
+Currently, only markdown files are supported.
 
 ## Basic Usage
 To upload a single file on every push:
@@ -18,7 +18,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: curvenote push
-      uses: ./
+      uses: curvenote/push-to-curvenote@main
       with:
         path: notes_202101.md
         project: Team Notes
@@ -27,6 +27,9 @@ jobs:
       env:
         CURVENOTE_TOKEN: ${{ secrets.CURVENOTE_TOKEN }}
 ```
+This requires your curvenote API token saved in your GitHub secrets under
+`CURVENOTE_TOKEN`.
+
 If the `Team Notes` Project does not yet exist, it will be created under
 team `curvenote`. If `Team Notes` Project does exist, the team will be ignored.
 Similarly, if the Article `Notes from Jan 2021` does not exist, it will be
@@ -45,7 +48,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: curvenote push
-      uses: ./
+      uses: curvenote/push-to-curvenote@main
       with:
         path: notes
         project: Team Notes
@@ -77,8 +80,8 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: curvenote push file
-      uses: ./
+    - name: curvenote push
+      uses: curvenote/push-to-curvenote@main
       with:
         path: notes_202101.md
         project: Team Notes
