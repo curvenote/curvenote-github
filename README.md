@@ -2,8 +2,7 @@
 
 ## Description
 This GitHub action allows you to automate pushing files and folders
-from GitHub to [curvenote](https://curvenote.com). It uses the
-open-source [curvenote Python client](https://pypi.org/project/curvenote/).
+from GitHub to [curvenote](https://curvenote.com). It uses the [curvenote Python client](https://pypi.org/project/curvenote/).
 Currently, only markdown files are supported.
 
 ## Basic Usage
