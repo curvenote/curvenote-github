@@ -1,5 +1,9 @@
-name: Push
+name: Curvenote Push
+author: Curvenote
 description: Push a file to curvenote article
+branding:
+  icon: 'zap'
+  color: 'blue'
 inputs:
   path:
     description: |
